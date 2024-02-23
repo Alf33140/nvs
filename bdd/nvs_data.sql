@@ -55,9 +55,10 @@ INSERT INTO `action` (`id_action`, `nom_action`, `nb_points`, `description_actio
 (145, 'Bousculer', 1, 'Permet de bouculer quelqu\'un', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (146, 'Construire - Gare', 1, 'Permet de construire une gare.', 1, 0, 0, 250, 5000, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
 (147, 'Construire - Rail', 1, 'Permet de construire une portion de rail.', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
-(148, 'Construire - Point stratégique', 1, 'Permet de construire un point stratégique.', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0);
-
--- --------------------------------------------------------
+(148, 'Construire - Point stratégique', 1, 'Permet de construire un point stratégique.', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
+(149, 'Construire - Dispensaire Principal', 1, 'Permet de construire un dispensaire chirurgical', 1, 0, 0, 300, 5000, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
+(150, 'Construire - Centre de Mobilisation', 1, 'Permet de construire un Centre de Mobilisation. Les persos peuvent respawn dedans', 1, 0, 0, 300, 5000, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0);
+  -- --------------------------------------------------------
 
 --
 -- Contenu de la table `action_as_batiment`
@@ -71,9 +72,9 @@ INSERT INTO `action_as_batiment` (`id_action`, `id_batiment`, `contenance`) VALU
 (59, 8, 50),
 (64, 9, 100),
 (146, 11, 50),
-(148, 13, 1);
-
-
+(148, 13, 1),
+(149, 14, 100),
+(150, 15, 100);
 -- --------------------------------------------------------
 
 --
@@ -199,9 +200,10 @@ INSERT INTO `batiment` (`id_batiment`, `nom_batiment`, `pvMax_batiment`, `descri
 (10, 'Pénitencier', 15000, 'La prison est un batiment ou sont enferm&eacute;s les criminels', 3),
 (11, 'Gare', 5000, 'Une gare', 3),
 (12, 'Train', 2500, 'Un train', 1),
-(13, 'Point stratégique', 100000, 'Point stratégique dont le controle rapporte des points de victoire', 1);
-
--- --------------------------------------------------------
+(13, 'Point stratégique', 100000, 'Point stratégique dont le controle rapporte des points de victoire', 1),
+(14, 'Dispensaire Principal', 5000, 'Un Dispensaire Principal permet de centraliser les rapatriements sanitaines des hôpitaux de campagne de l avant positionnés de la carte', 3),
+(15, 'Centre de Mobilisation', 5000, 'Un Centre de Mobilisation centralise les flux de soldats démobilisés ou remobilisés selon les besoins ainsi que les soldats permissionnaires de la carte', 3),
+  -- --------------------------------------------------------
 
 --
 -- Contenu de la table `banque_as_compagnie`
@@ -319,9 +321,10 @@ INSERT INTO `competence` (`id_competence`, `nom_competence`, `niveau_competence`
 (61, 'Port armures lourdes', 1, 1, 'Permet de baisser les malus dues au port des armures lourdes', 36),
 (62, 'Guerrier', 0, 1, 'Comp&eacute;tence permettant de d&eacute;bloquer les actions des comp&eacute;tences passives des guerriers', 50),
 (63, 'Construire - Gare', 3, 1, 'Permet de construire des gares', 50),
-(64, 'Construire - Rail', 1, 1, 'Permet de construire des rails', 50);
-
--- --------------------------------------------------------
+(64, 'Construire - Rail', 1, 1, 'Permet de construire des rails', 50),
+(65, 'Construire - Dispensaire Principal', 5, 5, 'Permet de construire un Dispensaire Principal. Les persos peuvent respwan dedans', 100),
+(66, 'Construire - Cebtre de Mobilisation', 5, 5, 'Permet de construire un Centre de Mobilisation. Les persos peuvent respwan dedans', 100),
+  -- --------------------------------------------------------
 
 --
 -- Contenu de la table `competence_as_action`
@@ -346,8 +349,9 @@ INSERT INTO `competence_as_action` (`id_competence`, `id_action`) VALUES
 (50, 109),
 (59, 140),
 (63, 146),
-(64, 147);
-
+(64, 147),
+(65, 149),
+(66, 150);
 -- --------------------------------------------------------
 
 --
@@ -487,7 +491,8 @@ INSERT INTO `perso_as_competence` (`id_perso`, `id_competence`, `nb_points`) VAL
 ('1', '28', '1'),
 ('1', '29', '1'),
 ('1', '63', '1'),
-('1', '64', '1'),
+('1', '65', '1'),
+('1', '66, '1'),  
 ('2', '4', '1'),
 ('2', '22', '1'),
 ('2', '23', '1'),
@@ -496,8 +501,9 @@ INSERT INTO `perso_as_competence` (`id_perso`, `id_competence`, `nb_points`) VAL
 ('2', '28', '1'),
 ('2', '29', '1'),
 ('2', '63', '1'),
-('2', '64', '1');
-
+('2', '64', '1'),
+('2', '65', '1'),
+('2', '66', '1');
 --
 -- Contenu de la table `perso_in_compagnie`
 --
