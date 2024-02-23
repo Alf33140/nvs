@@ -431,6 +431,23 @@ if(isset($_SESSION["id_perso"])){
 							<input type="radio" name="batiment" value="b11r.png" id="gare_rouge">
 							<img src="../images_perso/b11r.png" width="34" height="34"><br>Gare Sud
 						</td>
+						<td> 
+							<input type="radio" name="batiment" value="b14b.png" id="Dispensaire_bleu">
+							<img src="../images_perso/b14b.png" width="34" height="34"><br>Dispensaire Principal Nord
+						</td>
+						<td> 
+							<input type="radio" name="batiment" value="b14r.png" id="Dispensaire_rouge">
+							<img src="../images_perso/b14r.png" width="34" height="34"><br>Dispensaire Principal Sud
+						</td>
+						<td> 	
+							<input type="radio" name="batiment" value="b15b.png" id="Centre_bleu">
+							<img src="../images_perso/b15b.png" width="34" height="34"><br>Centre de Mobilissation Nord
+						</td>
+						<td> 
+							<input type="radio" name="batiment" value="b14r.png" id="Centre_rouge">
+							<img src="../images_perso/b15r.png" width="34" 5eight="34"><br>Centre de Mobilissation Sud
+						</td>
+						<td> 	
 					</tr>
 					
 					<tr>
