@@ -644,7 +644,7 @@ if($dispo == '1' || $admin){
 							/////////////////
 							// On veut vendre
 							// Possible seulement dans : fort, fortins, hopitaux, entrepots
-							if($id_bat == '6' || $id_bat == '7' || $id_bat == '8' || $id_bat == '9'){
+							if($id_bat == '6' || $id_bat == '7' || $id_bat == '8' || $id_bat == '9' || $id_bat == '14' || $id_bat == '15'){
 
 								if(isset($_GET['vente']) && $_GET['vente'] == 'ok'){
 
@@ -664,7 +664,7 @@ if($dispo == '1' || $admin){
 												AND perso_as_objet.id_objet=objet.id_objet
 												AND (type_objet='S' OR type_objet='SSP' OR type_objet='SP')";
 									}
-									if($id_bat == '8' || $id_bat == '9'){
+									if($id_bat == '8' || $id_bat == '9' || $id_bat == '15'){
 										// On ne peut vendre que des objets de type autre que ressources et soins dans un fort / fortin
 										// Récupération des objets non S et non M que posséde le perso
 										$sql_ressources = "SELECT DISTINCT objet.id_objet FROM perso_as_objet, objet WHERE id_perso='$id_perso'
@@ -673,11 +673,16 @@ if($dispo == '1' || $admin){
 												AND type_objet!='S' AND type_objet!='SP' AND type_objet!='SSP'
 												AND objet.id_objet != '1'
 												AND perso_as_objet.equip_objet = '0'
-                        AND objet.echangeable = 1";
+                        									AND objet.echangeable = 1";
 									}
-
+									if($id_bat == '14'){
+										// On ne peut vendre que des objets de type soins dans un Dispensaire Principal
+										// Récupération des objets de soin (S ou SP ou SSP) que posséde le perso
+										$sql_ressources = "SELECT DISTINCT objet.id_objet FROM perso_as_objet, objet WHERE id_perso='$id_perso'
+												AND perso_as_objet.id_objet=objet.id_objet
+												AND (type_objet='S' OR type_objet='SSP' OR type_objet='SP')";
 									$res_resources = $mysqli->query($sql_ressources);
-
+									}
 									echo "<table border=1 align=center width='70%'>";
 									echo "<tr><th colspan='5'>Vos ressources</th></tr>";
 									echo "<tr><th>Objet</th><th>Poids</th><th>Quantité possédée</th><th>Prix de vente (unité)</th><th>Vente</th></tr>";
@@ -1146,10 +1151,85 @@ if($dispo == '1' || $admin){
 									}
 								}
 							}
+//////////////
+							// Dispensaire Principal
+							if($id_bat == '14'){
 
+								echo "<center><font color='red'>Chaque achat coûte 2PA au perso (il vous reste ".$pa_perso." PA)</font></center>";
+
+								// Objets de soin
+								echo "<table width=100% border=1>";
+								echo "<tr><th colspan='6' style='text-align:center'>Objets de soin</th></tr>";
+								echo "<tr bgcolor=\"lightgreen\">";
+								echo "<th style='text-align:center'>objet</th>";
+								echo "<th style='text-align:center'>image</th>";
+								echo "<th style='text-align:center'>description</th>";
+								echo "<th style='text-align:center'>poids</th>";
+								echo "<th style='text-align:center'>quantité</th>";
+								echo "<th style='text-align:center'>coût à l'unité</th>";
+								echo "<th style='text-align:center'>achat</th>";
+								echo "</tr>";
+
+								// achat potions en tout genre + alcool ^^
+								// Objets de type S = Soin; SP et SSP = Soin Spécial
+								$sql = "SELECT * FROM objet WHERE type_objet = 'S' OR type_objet = 'SP' OR type_objet = 'SSP' or id_objet='4' ORDER BY coutOr_objet";
+								$res = $mysqli->query($sql);
+								$nb = $res->num_rows;
+
+								if($nb){
+									while ($t = $res->fetch_assoc()) {
+
+										echo "<form method=\"post\" action=\"batiment.php?bat=$id_i_bat\">";
+
+										$id_o 			= $t["id_objet"];
+										$nom_o 			= $t["nom_objet"];
+										$image_o 		= "objet".$id_o.".png";
+										$description_o 	= $t["description_objet"];
+										$poid_o 		= $t["poids_objet"];
+										$cout_o 		= $t["coutOr_objet"];
+
+										// Calcul du rabais
+										$rabais = floor(($cout_o * $pourcentage_rabais)/100);
+
+										echo "<tr>";
+										echo "	<td><center>$nom_o</center></td>";
+										echo "	<td align='center'><img src=\"../images/objets/$image_o\" width=\"40\" height=\"40\"></td>";
+										echo "	<td><center>$description_o</center></td>";
+										echo "	<td><center>$poid_o</center></td>";
+										echo "	<td align='center'>";
+										echo "		<select name='quantite_objet'>";
+										echo "			<option value='1'>1</option>";
+										echo "			<option value='2'>2</option>";
+										echo "			<option value='3'>3</option>";
+										echo "			<option value='4'>4</option>";
+										echo "			<option value='5'>5</option>";
+										echo "			<option value='6'>6</option>";
+										echo "		</select>";
+										echo "	</td>";
+										echo "	<td>";
+										echo "		<center>".$cout_o;
+										if($rabais) {
+											$new_cout_o = $cout_o - $rabais;
+											echo "<font color='blue'> ($new_cout_o)</font>";
+										}
+										echo "		</center>";
+										echo "	</td>";
+										echo "	<td align=\"center\"><input type='submit' class='btn btn-primary' name='achat_objet' value='Acheter' ";
+										if ($pa_perso < 2) {
+											echo "disabled";
+										}
+										echo " />";
+										echo "<input type='hidden' name='hid_achat_objet' value=".$id_o." />";
+										echo "	</td>";
+										echo "</tr>";
+
+										echo "</form>";
+									}
+								}
+							}
 							/////////////////////
-							// forts et fortins
-							if($id_bat == '8' || $id_bat == '9') {
+							// forts et fortins et Centre de Mobilisation
+							if($id_bat == '8' || $id_bat == '9'|| $id_bat == '15') {
 
 								// Armes, Armures et Objets
 								echo "<form method=\"post\" action=\"batiment.php?bat=$id_i_bat\">";
