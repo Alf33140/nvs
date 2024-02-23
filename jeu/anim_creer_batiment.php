@@ -594,6 +594,8 @@ if(isset($_SESSION["id_perso"])){
 							<option value='8'>Fortin</option>
 							<option value='9'>Fort</option>
 							<option value='13'>Point stratégique</option>
+							<option value='14'>Dispensaire Principal</option>
+							<option value='15'>Centre de Mobilisation</option>
 						</select>
 						<select name="select_verifications">
 							<option value='1'>Aucune verification des contraintes</option>
