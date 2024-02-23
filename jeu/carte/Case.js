@@ -18,7 +18,7 @@ class Case{
         this.setCouleur();
         if(batiments_checkbox.checked && this.batiment != undefined){
             //on utilise l'image
-            if(this.batiment.nom == 'Fort' || this.batiment.nom == 'Fortin' || this.batiment.nom == 'Gare' || this.batiment.nom == 'Hopital' || this.batiment.nom == 'Pont'|| this.batiment.nom == 'Train' || this.batiment.nom == 'Pénitencier' || this.batiment.nom == 'Point stratégique'){
+            if(this.batiment.nom == 'Fort' || this.batiment.nom == 'Fortin' || this.batiment.nom == 'Gare' || this.batiment.nom == 'Hopital' || this.batiment.nom == 'Pont'|| this.batiment.nom == 'Train' || this.batiment.nom == 'Pénitencier' || this.batiment.nom == 'Point stratégique' || this.batiment.nom == 'Dispensaire Principal' || this.batiment.nom == 'Centre de Mobilisation'){
                 
                 
                 if(this.batiment.nom == 'Point stratégique'){
