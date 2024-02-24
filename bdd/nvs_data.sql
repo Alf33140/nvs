@@ -57,7 +57,8 @@ INSERT INTO `action` (`id_action`, `nom_action`, `nb_points`, `description_actio
 (147, 'Construire - Rail', 1, 'Permet de construire une portion de rail.', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
 (148, 'Construire - Point stratégique', 1, 'Permet de construire un point stratégique.', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
 (149, 'Construire - Dispensaire Principal', 1, 'Permet de construire un dispensaire chirurgical', 1, 0, 0, 300, 5000, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
-(150, 'Construire - Centre de Mobilisation', 1, 'Permet de construire un Centre de Mobilisation. Les persos peuvent respawn dedans', 1, 0, 0, 300, 5000, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0);
+(150, 'Construire - Centre de Mobilisation', 1, 'Permet de construire un Centre de Mobilisation. Les persos peuvent respawn dedans', 1, 0, 0, 300, 5000, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
+(151, 'Construire - Penitencier', 1, 'Permet de construire un Penitencier. Les persos y sont enfermés pour delit envers le camp. Les persos dedans sont placés par les anims', 1, 0, 0, 15000, 15000, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0);
   -- --------------------------------------------------------
 
 --
@@ -75,6 +76,7 @@ INSERT INTO `action_as_batiment` (`id_action`, `id_batiment`, `contenance`) VALU
 (148, 13, 1),
 (149, 14, 100),
 (150, 15, 100);
+(151, 10, 100);
 -- --------------------------------------------------------
 
 --
@@ -324,6 +326,7 @@ INSERT INTO `competence` (`id_competence`, `nom_competence`, `niveau_competence`
 (64, 'Construire - Rail', 1, 1, 'Permet de construire des rails', 50),
 (65, 'Construire - Dispensaire Principal', 5, 5, 'Permet de construire un Dispensaire Principal. Les persos peuvent respwan dedans', 100),
 (66, 'Construire - Cebtre de Mobilisation', 5, 5, 'Permet de construire un Centre de Mobilisation. Les persos peuvent respwan dedans', 100),
+(67, 'Construire - Penitencier', 5, 5, 'Permet de construire un Penitencier. Les persos sont enfermés dedans pour des délits envers leur camp', 100),
   -- --------------------------------------------------------
 
 --
@@ -351,7 +354,8 @@ INSERT INTO `competence_as_action` (`id_competence`, `id_action`) VALUES
 (63, 146),
 (64, 147),
 (65, 149),
-(66, 150);
+(66, 150),
+(67, 151);
 -- --------------------------------------------------------
 
 --
