@@ -219,12 +219,20 @@ function verif_contraintes_construction($mysqli, $id_bat, $camp_perso, $x_bat, $
 		// tour de guêt => 1 Génie civil
 		$nb_genie_civil 	= 1;
 		$nb_soigneur		= 0;
+		}
+	else if ($id_bat == '14') {
+		// Dispensaire Principal => 6 Génie civil présent à 10 cases autour du point de construction et 3 soigneurs
+		$nb_genie_civil 	= 6;
+		$nb_soigneur		= 3;
+	}
+	else if ($id_bat == '15') {
+		// Centre de Mobilisation => 10 Génie civil présent à 10 cases autour du point de construction
+		$nb_genie_civil 	= 10;
+		$nb_soigneur		= 0;
 	}
 	else {
 		$nb_genie_civil 	= 0;
 		$nb_soigneur		= 0;
-	}
-	
 	// Verification nb genie civil
 	$sql = "SELECT count(perso.id_perso) as nb_gc FROM perso, perso_in_compagnie, compagnies 
 							WHERE perso.id_perso = perso_in_compagnie.id_perso
@@ -352,6 +360,20 @@ function verif_contraintes_construction_bat($mysqli, $id_bat, $camp_perso, $x_ba
 		$nb_cases_rapat = 20;
 		$nb_cases_tour	= 0;
 	}
+	else if ($id_bat == '14') {
+		// Dispensaire Principal
+		$nb_cases_bat 	= 2;
+		$nb_cases_gare	= 15;
+		$nb_cases_rapat = 20;
+		$nb_cases_tour	= 0;
+	}
+	else if ($id_bat == '15') {
+		// Centre de Mobilisation
+		$nb_cases_bat 	= 2;
+		$nb_cases_gare	= 15;
+		$nb_cases_rapat = 20;
+		$nb_cases_tour	= 0;
+	}
 	else {
 		$nb_cases_bat 	= 2;
 		$nb_cases_gare	= 2;
@@ -453,10 +475,10 @@ function verif_contraintes_construction_bat($mysqli, $id_bat, $camp_perso, $x_ba
 
 	}
 	
-	$verif_berge_pont			= 1;
+	$verif_berge_pont		= 1;
 	$verif_distance_pont 		= 0;
 	$verif_distance_pont_bat 	= 0;
-	$verif_largeur_pont			= 0;
+	$verif_largeur_pont		= 0;
 	
 	if ($id_bat == '5') {
 		
