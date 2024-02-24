@@ -219,7 +219,7 @@ function verif_contraintes_construction($mysqli, $id_bat, $camp_perso, $x_bat, $
 		// tour de guêt => 1 Génie civil
 		$nb_genie_civil 	= 1;
 		$nb_soigneur		= 0;
-		}
+	}
 	else if ($id_bat == '14') {
 		// Dispensaire Principal => 6 Génie civil présent à 10 cases autour du point de construction et 3 soigneurs
 		$nb_genie_civil 	= 6;
@@ -228,6 +228,11 @@ function verif_contraintes_construction($mysqli, $id_bat, $camp_perso, $x_bat, $
 	else if ($id_bat == '15') {
 		// Centre de Mobilisation => 10 Génie civil présent à 10 cases autour du point de construction
 		$nb_genie_civil 	= 10;
+		$nb_soigneur		= 0;
+	}
+	else if ($id_bat == '10') {
+		// Penitencier => 6 Génie civil présent à 10 cases autour du point de construction
+		$nb_genie_civil 	= 6;
 		$nb_soigneur		= 0;
 	}
 	else {
@@ -3683,7 +3688,7 @@ function recup_id_competence_bat($id_batiment){
 	}
 	if($id_batiment == 10){
 		// prison
-		//$id_competence = 0;
+		$id_competence = 65;
 	}
 	
 	return $id_competence;
