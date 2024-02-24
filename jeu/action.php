@@ -1550,7 +1550,7 @@ if($dispo == '1' || $admin) {
 														$fond_carte = $tab["fond_carte"];
 														
 														//barricade, tours, batiments => constructibles sur plaine seulement
-														if($id_bat == '1' || $id_bat == '2' || $id_bat == '3' || $id_bat == '6' || $id_bat == '7' || $id_bat == '8' || $id_bat == '9' || $id_bat == '10' || $id_bat == '11'){
+														if($id_bat == '1' || $id_bat == '2' || $id_bat == '3' || $id_bat == '6' || $id_bat == '7' || $id_bat == '8' || $id_bat == '9' || $id_bat == '10' || $id_bat == '11' || $id_bat == '14' || $id_bat == '15'){
 															
 															// Possibilité de construire barricade sur rail
 															if($fond_carte == 'rail.gif' OR $fond_carte=='rail_1.gif' OR $fond_carte=='rail_2.gif' OR $fond_carte=='rail_3.gif' OR $fond_carte=='rail_4.gif' OR $fond_carte=='rail_5.gif' OR $fond_carte=='rail_7.gif' OR $fond_carte=='railP.gif'){
