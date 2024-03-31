@@ -169,7 +169,7 @@ if($dispo == '1' || $admin){
 							$y_min_spawn 		= 0;
 							$y_max_spawn 		= 40;
 							$group_id 			= 9;
-							$couleur_clan_perso = "red";
+							$couleur_clan_perso = "green";
 							
 							if ($type_perso == 1 || $type_perso == 2) {
 								$image_chef = "cavalerie_ind.gif";
