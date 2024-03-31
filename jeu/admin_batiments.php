@@ -186,7 +186,7 @@ if(isset($_SESSION["id_perso"])){
 								if ($camp_instance_bat == 1) {
 									$color_camp = "blue";
 								}
-								else if ($camp_instance_bat == 2) {
+								if ($camp_instance_bat == 2) {
 									$color_camp = "red";
 								}
 								else if ($camp_instance_bat == 3) {
