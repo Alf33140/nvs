@@ -34,11 +34,17 @@ if (isset($_GET['clef']) && $_GET['clef'] == $clef_secrete) {
 			$image_train 		= "b12b.png";
 			$couleur_camp_train	= "blue";
 		}
+		if ($camp_train == 3) {
+			// Nord
+			$image_train 		= "b12i.png";
+			$couleur_camp_train	= "green";
+			
 		else if ($camp_train == 2) {
 			// Sud
 			$image_train 		= "b12r.png";
 			$couleur_camp_train	= "red";
 		}
+		
 		else {
 			// Ne devrait pas arriver
 			$image_train 		= "b12.png";
