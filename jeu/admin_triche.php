@@ -18,11 +18,16 @@ function echo_chef($mysqli, $id_joueur){
 
 	if ($camp_p == 1) {
 		$color_p = "blue";
-	} else if ($camp_p == 2) {
-		$color_p = "red";
-	} else {
-		$color_p = "black";
 	}
+	if ($camp_p == 2) {
+		$color_p = "red";
+	} 
+	if ($camp_p == 3) {
+		$color_p = "green";
+	}
+	else  ($camp_p == ) {
+		$color_p = "black";
+	
 	echo "<font color='$color_p'>".$nom_p." [".$id_p."]</font>";
 }
 
@@ -131,9 +136,14 @@ if(isset($_SESSION["id_perso"])){
 								
 								if ($camp_p == 1) {
 									$color_p = "blue";
-								} else if ($camp_p == 2) {
+								} 
+								if ($camp_p == 2) {
 									$color_p = "red";
-								} else {
+								} 
+								if ($camp_p == 3) {
+									$color_p = "green";
+								}
+								else {
 									$color_p = "black";
 								}
 									
@@ -178,15 +188,18 @@ if(isset($_SESSION["id_perso"])){
 								
 								$id_joueur1 	= $t["id_joueur1"];
 								$id_joueur2 	= $t["id_joueur2"];
+								$id_joueur3 	= $t["id_joueur3"];
 								$email_joueur1 	= $t["email_joueur1"];
 								$email_joueur2 	= $t["email_joueur2"];
+								$email_joueur3 	= $t["email_joueur3"];
 								$inference_bas	= $t["ib"];
 								
-								if ($id_joueur2 > $id_joueur1) {
+								if ($id_joueur2 > $id_joueur1 > $id_joueur3) {
 									echo "<tr>";
 									
 									echo "<td> Joueur id : ".$id_joueur1." - email : ".$email_joueur1."</td>";
 									echo "<td> Joueur id : ".$id_joueur2." - email : ".$email_joueur2."</td>";
+									echo "<td> Joueur id : ".$id_joueur3." - email : ".$email_joueur3."</td>";
 									echo "<td>".$inference_bas."</td>";
 									
 									echo "</tr>";
@@ -324,6 +337,8 @@ if(isset($_SESSION["id_perso"])){
 									$color_p = "black";
 									if ($clan == 1) {
 										$color_p = "blue";
+									if ($clan == 3) {
+										$color_p = "green";
 									} else if ($clan == 2) {
 										$color_p = "red";
 									}
@@ -393,6 +408,8 @@ if(isset($_SESSION["id_perso"])){
 									$color_p = "black";
 									if ($clan == 1) {
 										$color_p = "blue";
+									if ($clan == 3) {
+										$color_p = "green";
 									} else if ($clan == 2) {
 										$color_p = "red";
 									}
@@ -455,6 +472,8 @@ if(isset($_SESSION["id_perso"])){
 								$color_p = "black";
 								if ($clan == 1) {
 									$color_p = "blue";
+								if ($clan == 3) {
+									$color_p = "green";
 								} else if ($clan == 2) {
 									$color_p = "red";
 								}
