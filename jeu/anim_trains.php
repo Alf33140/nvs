@@ -35,7 +35,7 @@ if($dispo == '1' || $admin){
 			if ($camp == '1') {
 				$nom_camp = 'Nord';
 			}
-			else if ($camp == '2') {
+			if ($camp == '2') {
 				$nom_camp = 'Sud';
 			}
 			else if ($camp == '3') {
@@ -92,7 +92,10 @@ if($dispo == '1' || $admin){
 						if ($camp == '1') {
 							$image_train .= 'b.gif';
 						}
-						else {
+						if ($camp == '3') {
+							$image_train .= 'g.gif';
+						}
+						if ($camp == '1') {
 							$image_train .= 'r.gif';
 						}
 
