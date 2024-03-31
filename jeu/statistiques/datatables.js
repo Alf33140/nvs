@@ -7,6 +7,8 @@ $(document).ready(function () {
 		'rowCallback': function(row, data, index){
 			if(data['camp']== "2"){
 				$(row).find('td:eq(4)').css('color', 'red');
+			if(data['camp']== "3"){
+				$(row).find('td:eq(4)').css('color', 'green');
 			}else if (data['camp']== "1"){
 				$(row).find('td:eq(4)').css('color', 'blue');
 			}else{
@@ -37,6 +39,8 @@ $(document).ready(function () {
             "render": function (data, type, full, meta){
                 if(data==1){
                     return 'Nord';
+		if(data==3){
+                    return 'Nation Indienne';
                 }else if (data==2){
                     return 'Sud';
                 }
@@ -50,6 +54,8 @@ $(document).ready(function () {
 		'rowCallback': function(row, data, index){
 			if(data['camp']== "2"){
 				$(row).find('td:eq(4)').css('color', 'red');
+			if(data['camp']== "3"){
+				$(row).find('td:eq(4)').css('color', 'green');
 			}else if (data['camp']== "1"){
 				$(row).find('td:eq(4)').css('color', 'blue');
 			}else{
@@ -92,6 +98,8 @@ $(document).ready(function () {
             "render": function (data, type, full, meta){
                 if(data==1){
                     return 'Nord';
+		if(data==3){
+                    return 'Nation Indienne';
                 }else if (data==2){
                     return 'Sud';
                 }
@@ -105,6 +113,8 @@ $(document).ready(function () {
 		'rowCallback': function(row, data, index){
 			if(data['camp']== "2"){
 				$(row).find('td:eq(2)').css('color', 'red');
+			if(data['camp']== "3"){
+				$(row).find('td:eq(2)').css('color', 'green');
 			}else if (data['camp']== "1"){
 				$(row).find('td:eq(2)').css('color', 'blue');
 			}else{
@@ -134,6 +144,8 @@ $(document).ready(function () {
             "render": function (data, type, full, meta){
                 if(data==1){
                     return 'Nord';
+		if(data==3){
+                    return 'Nation Indienne';
                 }else if (data==2){
                     return 'Sud';
                 }
