@@ -124,7 +124,7 @@ if(isset($_SESSION["id_perso"])){
 					if($id_camp_fort == '1'){
 						$bat_camp = "b";
 					}
-					else if($id_camp_fort == '2'){
+					if($id_camp_fort == '2'){
 						$bat_camp = "r";
 					}
 					else if($id_camp_fort == '3'){
@@ -164,6 +164,11 @@ if(isset($_SESSION["id_perso"])){
 					if ($id_camp_fort == 2) {
 						$image_canon_g = 'canonG_sud.gif';
 						$image_canon_d = 'canonD_sud.gif';
+					}
+					
+					if ($id_camp_fort == 3) {
+						$image_canon_g = 'canonG_ind.gif';
+						$image_canon_d = 'canonD_ind.gif';
 					}
 					
 					// Canons Gauche
@@ -282,6 +287,9 @@ if(isset($_SESSION["id_perso"])){
 								$nom_camp 		= "Nord";
 								$couleur_camp	= "blue";
 							}
+							if ($id_camp == 3) {
+								$nom_camp 		= "Indien";
+								$couleur_camp	= "green";
 							else {
 								$nom_camp 		= "Sud";
 								$couleur_camp	= "red";
