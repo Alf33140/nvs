@@ -213,7 +213,8 @@ INSERT INTO `batiment` (`id_batiment`, `nom_batiment`, `pvMax_batiment`, `descri
 
 INSERT INTO `banque_as_compagnie` (`id_compagnie`, `montant`) VALUES
 ('1', '0'),
-('2', '0');
+('2', '0'),
+('3', '0');
 
 -- --------------------------------------------------------
 
@@ -223,7 +224,8 @@ INSERT INTO `banque_as_compagnie` (`id_compagnie`, `montant`) VALUES
 
 INSERT INTO `banque_compagnie` (`id_perso`, `montant`, `demande_emprunt`, `montant_emprunt`) VALUES
 ('1', '0', '0', '0'),
-('2', '0', '0', '0');
+('2', '0', '0', '0'),
+('3', '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -243,6 +245,8 @@ Elle existe pour permettre la construction des nouveaux bâtiments nordistes qui
 Ses membres sont formés à des techniques spécifiques de construction et de surveillance. ', '1', '1'),
 ('2', 'TIG-RES ', '', 'Compagnie TIG-RES : construction des infrastructures des confédérés', 'Réparation des anciens bâtiments et supervision de la construction des nouveaux.
 Même et surtout en situation de crise quand les troupes du génie conventionnel seront dépassées et qu\'il faudra oeuvrer sous le feu de l\'ennemi. ', '2', '1');
+('3', 'Esprits Batisseurs ', '', 'Esprits Batisseurs : construction des infrastructures des tribues premiers natifs', 'Réparation des anciens bâtiments et supervision de la construction des nouveaux.
+Même et surtout en situation de crise quand les forces des batisseurs conventionnels seront dépassées et qu\'il faudra oeuvrer sous le feu dees visages pâles. ', '3', '1')
 
 -- --------------------------------------------------------
 
@@ -253,7 +257,8 @@ Même et surtout en situation de crise quand les troupes du génie conventionnel
 
 INSERT INTO `compagnie_as_contraintes` (`id_compagnie`, `contrainte_type_perso`) VALUES
 ('1', '3'),
-('2', '3');
+('2', '3'),
+('3', '3');
 
 -- --------------------------------------------------------
 
@@ -393,8 +398,10 @@ VALUES (
 '1', 'courant'
 ), (
 '2', 'archive'
-);
-
+),
+'3', 'courant'
+); 
+  
 --
 -- Contenu de la table `grades`
 --
@@ -429,7 +436,8 @@ INSERT INTO `grades` (`id_grade`, `nom_grade`, `pc_grade`, `point_armee_grade`) 
 --
 INSERT INTO `joueur` (`id_joueur`, `nom_joueur`, `email_joueur`, `mdp_joueur`, `age_joueur`, `pays_joueur`, `region_joueur`, `description_joueur`, `mail_info`, `admin_perso`) VALUES
 ('1', NULL, 'admin1@example.com', '4fded1464736e77865df232cbcb4cd19', NULL, NULL, NULL, NULL, '0', '1'),
-('2', NULL, 'admin2@example.com', '4fded1464736e77865df232cbcb4cd19', NULL, NULL, NULL, NULL, '0', '1');
+('2', NULL, 'admin1@example.com', '4fded1464736e77865df232cbcb4cd19', NULL, NULL, NULL, NULL, '0', '1'),
+('3', NULL, 'admin2@example.com', '4fded1464736e77865df232cbcb4cd19', NULL, NULL, NULL, NULL, '0', '1');
 
 --
 -- Contenu de la table `news`
@@ -460,7 +468,11 @@ INSERT INTO `objet` (`id_objet`, `nom_objet`, `portee_objet`, `bonusPerception_o
 --
 INSERT INTO `perso` (`id_perso`, `idJoueur_perso`, `nom_perso`, `type_perso`, `x_perso`, `y_perso`, `xp_perso`, `pi_perso`, `pc_perso`, `or_perso`, `pvMax_perso`, `pm_perso`, `pmMax_perso`, `pv_perso`, `perception_perso`, `recup_perso`, `pa_perso`, `paMax_perso`, `protec_perso`, `charge_perso`, `chargeMax_perso`, `bonusPerception_perso`, `bonusRecup_perso`, `bonusPM_perso`, `bonus_perso`, `image_perso`, `message_perso`, `bourre_perso`, `nb_kill`, `nb_mort`, `nb_pnj`, `dateCreation_perso`, `DLA_perso`, `description_perso`, `clan`, `a_gele`, `est_gele`, `date_gele`, `chef`, `bataillon`, `genie`) VALUES ('1', '1', 'Abraham Lincoln', '1', '165', '173', '0', '0', '999999999', '0', '7500', '100', '100', '7500', '10', '100', '100', '100', '20', '0', '50', '0', '0', '0', '0', 'cavalerie_nord.gif', 'Général des armées du Nord', '0', '0', '0', '0', NOW(), NOW(), 'Général des armées du Nord', '1', '0', '0', NULL, '1', 'Général de l\'Union', '1');
 INSERT INTO `perso` (`id_perso`, `idJoueur_perso`, `nom_perso`, `type_perso`, `x_perso`, `y_perso`, `xp_perso`, `pi_perso`, `pc_perso`, `or_perso`, `pvMax_perso`, `pm_perso`, `pmMax_perso`, `pv_perso`, `perception_perso`, `recup_perso`, `pa_perso`, `paMax_perso`, `protec_perso`, `charge_perso`, `chargeMax_perso`, `bonusPerception_perso`, `bonusRecup_perso`, `bonusPM_perso`, `bonus_perso`, `image_perso`, `message_perso`, `bourre_perso`, `nb_kill`, `nb_mort`, `nb_pnj`, `dateCreation_perso`, `DLA_perso`, `description_perso`, `clan`, `a_gele`, `est_gele`, `date_gele`, `chef`, `bataillon`, `genie`) VALUES ('2', '2', 'Jefferson Davis', '1', '8', '7', '0', '0', '999999999', '0', '7500', '100', '100', '7500', '10', '100', '100', '100', '20', '0', '5', '0', '0', '0', '0', 'cavalerie_sud.gif', 'Général des armées du Sud', '0', '0', '0', '0', NOW(), NOW(), 'Général des armées du Sud', '2', '0', '0', NULL, '1', 'Général du Sud', '1');
+INSERT INTO `perso` (`id_perso`, `idJoueur_perso`, `nom_perso`, `type_perso`, `x_perso`, `y_perso`, `xp_perso`, `pi_perso`, `pc_perso`, `or_perso`, `pvMax_perso`, `pm_perso`, `pmMax_perso`, `pv_perso`, `perception_perso`, `recup_perso`, `pa_perso`, `paMax_perso`, `protec_perso`, `charge_perso`, `chargeMax_perso`, `bonusPerception_perso`, `bonusRecup_perso`, `bonusPM_perso`, `bonus_perso`, `image_perso`, `message_perso`, `bourre_perso`, `nb_kill`, `nb_mort`, `nb_pnj`, `dateCreation_perso`, `DLA_perso`, `description_perso`, `clan`, `a_gele`, `est_gele`, `date_gele`, `chef`, `bataillon`, `genie`) VALUES ('3', '3', 'Appakatok Bull', '1', '8', '7', '0', '0', '999999999', '0', '7500', '100', '100', '7500', '10', '100', '100', '100', '20', '0', '5', '0', '0', '0', '0', 'cavalerie_ind.gif', 'Pere de la Nation Indienne', '0', '0', '0', '0', NOW(), NOW(), 'Sachem Patriarchale des Premiers Natifs', '3', '0', '0', NULL, '1', 'Pere de la patrie', '1');
 
+--
+-- Contenu de la table `perso_as_arme`
+  
 --
 -- Contenu de la table `perso_as_arme`
 --
@@ -468,13 +480,16 @@ INSERT INTO `perso_as_arme` (`id_perso`, `id_arme`, `est_portee`) VALUES ('1', '
 INSERT INTO `perso_as_arme` (`id_perso`, `id_arme`, `est_portee`) VALUES ('1', '4', '1');
 INSERT INTO `perso_as_arme` (`id_perso`, `id_arme`, `est_portee`) VALUES ('2', '1', '1');
 INSERT INTO `perso_as_arme` (`id_perso`, `id_arme`, `est_portee`) VALUES ('2', '4', '1');
-
+INSERT INTO `perso_as_arme` (`id_perso`, `id_arme`, `est_portee`) VALUES ('3', '1', '1');
+INSERT INTO `perso_as_arme` (`id_perso`, `id_arme`, `est_portee`) VALUES ('3', '4', '1');
+  
 --
 -- Contenu de la table `perso_as_grade`
 --
 INSERT INTO `perso_as_grade` (`id_perso`, `id_grade`) VALUES ('1', '18');
 INSERT INTO `perso_as_grade` (`id_perso`, `id_grade`) VALUES ('2', '18');
-
+INSERT INTO `perso_as_grade` (`id_perso`, `id_grade`) VALUES ('3', '18');
+  
 --
 -- Contenu de la table `perso_as_dossiers`
 --
@@ -482,7 +497,9 @@ INSERT INTO `perso_as_dossiers` (`id_perso`, `id_dossier`) VALUES ('1', '1');
 INSERT INTO `perso_as_dossiers` (`id_perso`, `id_dossier`) VALUES ('1', '2');
 INSERT INTO `perso_as_dossiers` (`id_perso`, `id_dossier`) VALUES ('2', '1');
 INSERT INTO `perso_as_dossiers` (`id_perso`, `id_dossier`) VALUES ('2', '2');
-
+INSERT INTO `perso_as_dossiers` (`id_perso`, `id_dossier`) VALUES ('3', '1');
+INSERT INTO `perso_as_dossiers` (`id_perso`, `id_dossier`) VALUES ('3', '2');
+  
 -- perso_as_competence
 --
 
@@ -507,23 +524,36 @@ INSERT INTO `perso_as_competence` (`id_perso`, `id_competence`, `nb_points`) VAL
 ('2', '63', '1'),
 ('2', '64', '1'),
 ('2', '65', '1'),
-('2', '66', '1');
+('2', '66', '1'),
+('3', '4', '1'),
+('3', '22', '1'),
+('3', '23', '1'),
+('3', '24', '1'),
+('3', '27', '1'),
+('3', '28', '1'),
+('3', '29', '1'),
+('3', '63', '1'),
+('3', '64', '1'),
+('3', '65', '1'),
+('3', '66', '1');
+  
 --
 -- Contenu de la table `perso_in_compagnie`
 --
 INSERT INTO `perso_in_compagnie` (`id_perso`, `id_compagnie`, `poste_compagnie`, `attenteValidation_compagnie`) VALUES ('1', '1', '1', '0');
 INSERT INTO `perso_in_compagnie` (`id_perso`, `id_compagnie`, `poste_compagnie`, `attenteValidation_compagnie`) VALUES ('2', '2', '1', '0');
-
+INSERT INTO `perso_in_compagnie` (`id_perso`, `id_compagnie`, `poste_compagnie`, `attenteValidation_compagnie`) VALUES ('3', '3', '1', '0');
+  
 --
 -- Contenu de la table `perso_in_em`
 --
 INSERT INTO `perso_in_em` (`id_perso`, `camp_em`) VALUES
 ('1', '1'),
-('2', '2');
-
+('2', '2'),
+('3', '3');
 
 -- --------------------------------------------------------
--- FIN INSERTION DES 2 GENERAUX
+-- FIN INSERTION DES 2 GENERAUX et du PERE DES PREMIERS NATIFS
 
 --
 -- Contenu de la table `pnj`
