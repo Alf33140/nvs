@@ -36,7 +36,7 @@ if($dispo == '1' || $admin){
 				$nom_camp = 'Nord';
 				$b_camp = 'b';
 			}
-			else if ($camp == '2') {
+			if ($camp == '2') {
 				$nom_camp = 'Sud';
 				$b_camp = 'r';
 			}
@@ -190,6 +190,9 @@ if($dispo == '1' || $admin){
 									if ($camp == 1) {
 										$image_bat = "b".$id_batiment."b.png";
 									}
+									if ($camp == 3) {
+										$image_bat = "b".$id_batiment."g.png";
+									}
 									else if ($camp == 2) {
 										$image_bat = "b".$id_batiment."r.png";
 									}
@@ -287,6 +290,9 @@ if($dispo == '1' || $admin){
 									
 									if ($camp == 1) {
 										$image_bat = "b".$id_batiment."b.png";
+									}
+									if ($camp == 3) {
+										$image_bat = "b".$id_batiment."g.png";
 									}
 									else if ($camp == 2) {
 										$image_bat = "b".$id_batiment."r.png";
