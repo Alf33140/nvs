@@ -162,7 +162,37 @@ if($dispo == '1' || $admin){
 								$image_chef = "gatling_sud.gif";
 							}
 						}
-					
+
+						if($clan_perso == 3){
+							$x_min_spawn 		= 0;
+							$x_max_spawn 		= 40;
+							$y_min_spawn 		= 0;
+							$y_max_spawn 		= 40;
+							$group_id 			= 9;
+							$couleur_clan_perso = "red";
+							
+							if ($type_perso == 1 || $type_perso == 2) {
+								$image_chef = "cavalerie_ind.gif";
+							}
+							else if ($type_perso == 3) {
+								$image_chef = "infanterie_ind.gif";
+							}
+							else if ($type_perso == 4) {
+								$image_chef = "soigneur_ind.gif";
+							}
+							else if ($type_perso == 5) {
+								$image_chef = "shaman_ind.gif";
+							}
+							else if ($type_perso == 6) {
+								$image_chef = "toutou_ind.gif";
+							}
+							else if ($type_perso == 7) {
+								$image_chef = "cavalerie_ind_sud.gif";
+							}
+							else if ($type_perso == 8) {
+								$image_chef = "gatling_ind.gif";
+							}
+						}
 						if($clan_perso == 0){
 							$x_min_spawn 		= 0;
 							$x_max_spawn 		= 20;
@@ -417,6 +447,9 @@ if($dispo == '1' || $admin){
 				
 				if ($choix_camp == '1') {
 					$group_id = 8;
+				}
+				if ($choix_camp == '3') {
+					$group_id = 10;
 				}
 				else if ($choix_camp == '2') {
 					$group_id = 9;
