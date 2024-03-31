@@ -38,7 +38,7 @@ if($dispo == '1' || $admin){
 			if ($camp == '1') {
 				$nom_camp = 'Nord';
 			}
-			else if ($camp == '2') {
+			if ($camp == '2') {
 				$nom_camp = 'Sud';
 			}
 			else if ($camp == '3') {
@@ -74,7 +74,7 @@ if($dispo == '1' || $admin){
 						if ($camp_perso_punition == 1) {
 							$couleur_clan_perso = 'blue';
 						}
-						else if ($camp_perso_punition == 2) {
+						if ($camp_perso_punition == 2) {
 							$couleur_clan_perso = 'red';
 						}
 						else if ($camp_perso_punition == 3) {
