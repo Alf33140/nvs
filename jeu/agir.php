@@ -240,6 +240,9 @@ if ($verif_id_perso_session) {
 							if ($clan_cible == '1') {
 								$camp = 'Nord';
 							}
+								if ($clan_cible == '3') {
+								$camp = 'Indien';
+							}
 							else if ($clan_cible == '2') {
 								$camp = 'Sud';
 							}
@@ -1456,6 +1459,11 @@ if ($verif_id_perso_session) {
 							$camp_bat 		= 'r';
 							$couleur_bat 	= 'red';
 							$nom_camp_bat 	= 'Sud';
+						}
+						if($camp_instance == '3'){
+							$camp_bat 		= 'g';
+							$couleur_bat 	= 'green';
+							$nom_camp_bat 	= 'Indien';
 						}
 						
 						$image_bat = "b".$id_batiment."".$camp_bat.".png";
