@@ -602,11 +602,11 @@ if(isset($_SESSION["id_perso"])){
 							$nom_camp_perso 	= "Nord";
 							$couleur_camp_perso	= "blue";
 						}
-						else if ($camp_perso == 2) {
+						if ($camp_perso == 2) {
 							$nom_camp_perso 	= "Sud";
 							$couleur_camp_perso	= "red";
 						}
-						else if ($camp_perso == 2) {
+						else if ($camp_perso == 3) {
 							$nom_camp_perso 	= "Indiens";
 							$couleur_camp_perso	= "green";
 						}
