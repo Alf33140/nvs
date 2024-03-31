@@ -46,7 +46,7 @@ if(isset($_SESSION["id_perso"])){
 			else if($camp_bat == '2'){
 				$bat_camp = "r";
 			}
-			else if($camp_bat == '0'){
+			else if($camp_bat == '3'){
 				$bat_camp = "g";
 			}
 			
@@ -211,7 +211,10 @@ if(isset($_SESSION["id_perso"])){
 													$image_canon_g = 'canonG_sud.gif';
 													$image_canon_d = 'canonD_sud.gif';
 												}
-												
+												if ($camp_bat == 2) {
+													$image_canon_g = 'canonG_ind.gif';
+													$image_canon_d = 'canonD_ind.gif';
+												}
 												// Canons Gauche
 												$sql = "UPDATE carte SET image_carte='$image_canon_g' WHERE (x_carte=$x_bat - 1 AND y_carte=$y_bat - 1) OR (x_carte=$x_bat - 1 AND y_carte=$y_bat + 1)";
 												$mysqli->query($sql);
@@ -240,6 +243,10 @@ if(isset($_SESSION["id_perso"])){
 												if ($camp_bat == 2) {
 													$image_canon_g = 'canonG_sud.gif';
 													$image_canon_d = 'canonD_sud.gif';
+												}
+												if ($camp_bat == 2) {
+													$image_canon_g = 'canonG_ind.gif';
+													$image_canon_d = 'canonD_ind.gif';
 												}
 												
 												// Canons Gauche
