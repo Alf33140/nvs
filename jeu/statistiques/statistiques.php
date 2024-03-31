@@ -94,6 +94,17 @@ include("functions_statistiques.php");
 			</div>
 		</div>
 		<div class="row py-2">
+			<div >
+					<h6>Tribues Premiers Natifs</h6>
+				</div>
+				<div class="card">
+					<div class="card-body">
+						<canvas id="indienCompaPieChart"></canvas>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 py-1">
+				<div>
 			<div class="col-md-6 py-1">
 				<div >
 					<h6>Compagnies nord</h6>
