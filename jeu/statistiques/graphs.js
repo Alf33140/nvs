@@ -61,6 +61,12 @@ function getBarChartData(labels, dataNord, dataSud){
 			borderWidth: 1,
 			data: dataNord
 		}, {
+			label: 'Nation Indienne',
+			backgroundColor: 'green',
+			borderColor: 'green',
+			borderWidth: 1,
+			data: dataIndien
+		}, {
 			label: 'Sud',
 			backgroundColor: 'red',
 			borderColor: 'red',
@@ -106,7 +112,17 @@ function createGrouillotBarChartDatas(labels, dataNord, dataSud){
 			dataNord.push(countNord);
 			dataSud.push(countSud);
 		}
-		
+		var countIndien;
+		var foundIndien = dataBarChart.find(function(element, index){
+			if(element.camp=='3' && element.type==type){
+				return true;
+			}
+		});
+		if(foundIndien != undefined){
+			countIndien = foundNord.compte;
+		}else{
+			countIndien=0;
+		}
 		
 	});
 	
@@ -117,12 +133,12 @@ function setGrouillotChart(){
 	var dataNord = [];
 	var dataSud = [];
 
-	createGrouillotBarChartDatas(labels, dataNord, dataSud);
+	createGrouillotBarChartDatas(labels, dataNord, dataSud, dataIndien);
 
 	var ctx = document.getElementById('playersGrouillot').getContext('2d');
 	window.myBar = new Chart(ctx, {
 		type: 'bar',
-		data: getBarChartData(labels, dataNord, dataSud),
+		data: getBarChartData(labels, dataNord, dataSud, dataIndien),
 		options: {
 			responsive: true,
 			legend: {
@@ -142,10 +158,10 @@ function setPgPieChart(){
 	  new Chart(chPie, {
 	    type: 'pie',
 	    data: {
-	      labels: ['Nord', 'Sud'],
+	      labels: ['Nord', 'Sud', 'Indien'],
 	      datasets: [
 	        {
-	          backgroundColor: ['blue','red'],
+	          backgroundColor: ['blue','red','green'],
 	          borderWidth: 0,
 	          data: pgPieChart.map(e=>e.compte)
 	        }
@@ -189,10 +205,10 @@ function setXpPieChart(){
 	  new Chart(chPie, {
 	    type: 'pie',
 	    data: {
-	      labels: ['Nord', 'Sud'],
+	      labels: ['Nord', 'Sud','Indien'],
 	      datasets: [
 	        {
-	          backgroundColor: ['blue','red'],
+	          backgroundColor: ['blue','red','green'],
 	          borderWidth: 0,
 	          data: xpPieChart.map(e=>e.compte)
 	        }
@@ -296,18 +312,30 @@ function createGadeBarChartDatas(dataBarChart, labels, dataNord, dataSud){
 				return true;
 			}
 		});
+		var countIndien;
+		var foundIndien = dataBarChart.find(function(element, index){
+			if(element.camp=='3' && element.grade===data.grade){
+				return true;
+			}
+		});
 		
 		if(foundSud != undefined){
 			countSud = foundSud.compte;
 		}else{
 			countSud=0;
 		}
-		if(countNord != 0 || countSud != 0){
+		if(countNord != 0 || countSud != 0 || countIndien != 0){
 			labels.push(data.grade);
 			dataNord.push(countNord);
 			dataSud.push(countSud);
+			dataIndien.push(countIndien);
 		}
-		
+		if(countIndien != 0 || countSud != 0 countNord || != 0){
+			labels.push(data.grade);
+			dataNord.push(countNord);
+			dataSud.push(countSud);
+			dataIndien.push(countIndien);
+		}
 		
 	});
 	
@@ -317,13 +345,14 @@ function setGradesChart(dataGradeBarChart){
 	var labels = [];
 	var dataNord = [];
 	var dataSud = [];
+	var dataIndien = [];
 
-	createGadeBarChartDatas(dataGradeBarChart, labels, dataNord, dataSud);
+	createGadeBarChartDatas(dataGradeBarChart, labels, dataNord, dataSud, dataIndien);
 
 	var ctx = document.getElementById('gradesChart').getContext('2d');
 	window.myBar = new Chart(ctx, {
 		type: 'bar',
-		data: getBarChartData(labels, dataNord, dataSud),
+		data: getBarChartData(labels, dataNord, dataSud, dataIndien),
 		options: {
 			responsive: true,
 			legend: {
@@ -341,13 +370,14 @@ function setXpGradesChart(dataXpGradeBarChart){
 	var labels = [];
 	var dataNord = [];
 	var dataSud = [];
-
+	var dataIndien = [];
+	
 	createGadeBarChartDatas(dataXpGradeBarChart, labels, dataNord, dataSud);
 
 	var ctx = document.getElementById('xpGradesChart').getContext('2d');
 	window.myBar = new Chart(ctx, {
 		type: 'bar',
-		data: getBarChartData(labels, dataNord, dataSud),
+		data: getBarChartData(labels, dataNord, dataSud, dataIndien),
 		options: {
 			responsive: true,
 			legend: {
@@ -469,6 +499,22 @@ $.ajax({
     }
 });
 
+$.ajax({
+    method: "POST",
+    url: "functions_statistiques.php",
+    data:{
+		"type" :"compagnie",
+		"function":"listAllByCamp",
+		"params":'{"activeFor":6,"camp":3}'
+    },
+    success: function(data){
+        setCompaPieChart(data, "indienCompaPieChart");
+    },
+    error: function(error_data){
+        console.log("Endpoint GET request error");
+        // console.log(error_data)
+    }
+});
 $.ajax({
     method: "POST",
     url: "functions_statistiques.php",
