@@ -429,7 +429,7 @@ INSERT INTO `grades` (`id_grade`, `nom_grade`, `pc_grade`, `point_armee_grade`) 
 (102, 'Grouillot d\'élite', 0, 0);
 
 -- --------------------------------------------------------
--- INSERTION DES 2 GENERAUX
+-- INSERTION DES 2 GENERAUX et du PERE DES PREMIERS NATIFS
 
 --
 -- Contenu de la table `joueur`
