@@ -32,7 +32,7 @@ if(isset($_SESSION["id_perso"])){
 			$nom_camp = 'Nord';
 			$b_camp = 'b';
 		}
-		else if ($camp == '2') {
+		if ($camp == '2') {
 			$nom_camp = 'Sud';
 			$b_camp = 'r';
 		}
