@@ -60,7 +60,11 @@ if(isset($_GET['function'])){
             $davis = get_perso(2);
             $json_map = get_json_map($sqlPropertiesObj, $davis, true);
             save_historique_map($sqlPropertiesObj, $json_map, $davis);
-            break;
+
+		 $bull = get_perso(3);
+            $json_map = get_json_map($sqlPropertiesObj, $bull, true);
+            save_historique_map($sqlPropertiesObj, $json_map, $bull);
+	    break;
         }
         case 'get_historique':{
             if(isset($_POST['date'])){
