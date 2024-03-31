@@ -1220,6 +1220,10 @@ if($dispo == '1' || $admin) {
 													$clan_perso_carte = $t_perso_carte["clan"];
 													if($clan_perso_carte == $clan_perso){
 														$clan_pc = 'Nord';
+													if($clan_perso_carte == $clan_perso){
+														$clan_pc != 'Sud';
+													if($clan_perso_carte == $clan_perso){
+														$clan_pc != 'Indien';
 													}
 													else {
 														$clan_pc = 'Sud';
@@ -1386,6 +1390,9 @@ if($dispo == '1' || $admin) {
 														if($clan_perso_carte == $clan_perso){
 															$clan_pc = 'Nord';
 														}
+														if($clan_perso_carte == $clan_perso){
+															$clan_pc = 'Indien';
+														}
 														else {
 															$clan_pc = 'Sud';
 														}
@@ -1470,7 +1477,7 @@ if($dispo == '1' || $admin) {
 												case "2":
 													$camp_b = 'r';
 													break;
-												default:
+												case "3":
 													$camp_b = 'g';
 												
 											}
@@ -1817,6 +1824,8 @@ if($dispo == '1' || $admin) {
 															
 															if($clan_bat_carte == $clan_perso){
 																$clan_pc = 'Nord';
+															if($clan_bat_carte == $clan_perso){
+																$clan_pc = 'Indien';
 															}
 															else {
 																$clan_pc = 'Sud';
