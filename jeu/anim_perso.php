@@ -69,7 +69,7 @@ if($dispo == '1' || $admin){
 			if ($camp == '1') {
 				$nom_camp = 'Nord';
 			}
-			else if ($camp == '2') {
+			if ($camp == '2') {
 				$nom_camp = 'Sud';
 			}
 			else if ($camp == '3') {
@@ -119,7 +119,7 @@ if($dispo == '1' || $admin){
 								if ($camp == 1) {
 									$couleur_clan_p = 'blue';
 								}
-								else if ($camp == 2) {
+								if ($camp == 2) {
 									$couleur_clan_p = 'red';
 								}
 								else if ($camp == 3) {
@@ -203,7 +203,7 @@ if($dispo == '1' || $admin){
 								$camp 		= 'nord';
 								$id_group_forum	= 8;
 							}
-							else if ($camp_cible == 2) {
+							if ($camp_cible == 2) {
 								$couleur_clan_p = 'red';
 								$nom_camp 		= 'Sud';
 								$camp 		= 'sud';
@@ -213,6 +213,7 @@ if($dispo == '1' || $admin){
 								$couleur_clan_p = 'green';
 								$nom_camp 		= 'Indien';
 								$camp 		= 'indien';
+								$id_group_forum	= 10;
 							}
 							
 							// Récupération des grouillots du joueur 
@@ -274,7 +275,7 @@ if($dispo == '1' || $admin){
 								$image_perso	= 'cavalerie_sud.gif';
 							}
 							else if ($camp_cible == 3) {
-								$image_perso	= 'cavalerie_indien.gif';
+								$image_perso	= 'cavalerie_ind.gif';
 							}
 							
 							// MAJ Chef
@@ -452,10 +453,10 @@ if($dispo == '1' || $admin){
 									$nom_demande = "Changement de nom";
 									$info_demande = "Nouveau nom : ".$info_demande;
 								}
-								else if ($type_demande == 2) {
+								if ($type_demande == 2) {
 									$nom_demande = "Demande de suppression";
 								}
-								else if ($type_demande == 3) {
+								if ($type_demande == 3) {
 									$nom_demande = "Demande de changement de nom de bataillon";
 								}
 								else if ($type_demande == 4) {
