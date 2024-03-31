@@ -33,7 +33,7 @@ if($dispo == '1' || $admin){
 				$nom_camp = 'Nord';
 				$couleur_clan_perso = 'blue';
 			}
-			else if ($camp == '2') {
+			if ($camp == '2') {
 				$nom_camp = 'Sud';
 				$couleur_clan_perso = 'red';
 			}
