@@ -37,7 +37,7 @@ if($dispo == '1' || $admin){
 				$b_camp 		= 'b';
 				$couleur_camp	= 'blue';
 			}
-			else if ($camp == '2') {
+			if ($camp == '2') {
 				$nom_camp 		= 'Sud';
 				$b_camp 		= 'r';
 				$couleur_camp	= 'red';
@@ -170,7 +170,7 @@ if($dispo == '1' || $admin){
 						if ($camp_perso == 1) {
 							$couleur_clan_perso = 'blue';
 						}
-						else if ($camp_perso == 2) {
+						if ($camp_perso == 2) {
 							$couleur_clan_perso = 'red';
 						}
 						else if ($camp_perso == 3) {
@@ -433,7 +433,7 @@ if($dispo == '1' || $admin){
 										if ($camp == '1') {
 											$nom_camp_perso_list = 'Nord';
 										}
-										else if ($camp == '2') {
+										if ($camp == '2') {
 											$nom_camp_perso_list = 'Sud';
 										}
 										else if ($camp == '3') {
@@ -497,7 +497,7 @@ if($dispo == '1' || $admin){
 										$nom_camp_perso_peni 		= 'Nord';
 										$couleur_camp_perso_peni	= 'blue';
 									}
-									else if ($camp == '2') {
+									if ($camp == '2') {
 										$nom_camp_perso_peni 		= 'Sud';
 										$couleur_camp_perso_peni	= 'red';
 									}
