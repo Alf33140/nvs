@@ -16,7 +16,7 @@ function dump_mysql($mysqli, $serveur, $login, $password, $base, $mode) {
 		$nom_table = $table[0];
 		
 		// structure ou la totalité de la BDD
-        if($mode == 1 || $mode == 2) {			
+        if($mode == 1 || $mode == 2|| $mode == 3) {			
 			$creations .= "-- -----------------------------\n";
             $creations .= "-- Structure de la table ".$nom_table."\n";
             $creations .= "-- -----------------------------\n";
