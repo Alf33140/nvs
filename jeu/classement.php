@@ -182,6 +182,13 @@ if(isset($_GET["top"])){
 			if($id_camp == "2"){
 				$couleur_camp = "red";
 			}
+			if($id_camp == "3"){
+				$couleur_camp = "green";
+			}
+			if($id_camp == "0"){
+				$couleur_camp = "black";
+			}
+
 			
 			echo "			<tr>";
 			echo "				<td width=10><center>$c</center></td>";
@@ -270,6 +277,12 @@ if(isset($_GET["titre"])){
 			}
 			if($camp_perso == "2"){
 				$couleur_camp = "red";
+			}
+			if($camp_perso == "3"){
+				$couleur_camp = "green";
+			}
+			if($camp_perso == "0"){
+				$couleur_camp = "black";
 			}
 			
 			// recuperation du nom du pnj
@@ -397,6 +410,16 @@ if(isset($_GET["stats"]) && $_GET["stats"] == 'ok'){
 	$sql = "SELECT * FROM dernier_tombe WHERE camp_perso_capture=2 AND camp_perso_captureur=2";
 	$res_ev_capt =  $mysqli->query($sql);
 	$nb_allies_capt_sud = $res_ev_capt->num_rows;
+
+	// Nombre de persos du sud capturés par les Indiens
+	$sql = "SELECT * FROM dernier_tombe WHERE camp_perso_capture=3 AND camp_perso_captureur=3";
+	$res_ev_capt =  $mysqli->query($sql);
+	$nb_allies_capt_sud = $res_ev_capt->num_rows;
+
+	// Nombre de persos du sud capturés par les Renegats
+	$sql = "SELECT * FROM dernier_tombe WHERE camp_perso_capture=0 AND camp_perso_captureur=0";
+	$res_ev_capt =  $mysqli->query($sql);
+	$nb_allies_capt_sud = $res_ev_capt->num_rows;
 	
 	// Nombre de persos du nord capturés par autre chose qu'un perso (pnj)
 	$sql = "SELECT * FROM dernier_tombe WHERE camp_perso_capture=1 AND camp_perso_captureur=0";
@@ -462,7 +485,26 @@ if(isset($_GET["stats"]) && $_GET["stats"] == 'ok'){
 			$autres			= $nb_autre_capt_sud;
 		}
 		if($id_camp == "3"){
-			$couleur_camp = "green";
+			$couleur_camp 	= "green";
+			$nom_camp 		= "Indiens";
+			$nb 			= $nbb;
+			$nbact 			= $nbbact;
+			$pvict 			= $nbvictb;
+			$nb_kill		= $nb_ennemis_capt_nord;
+			$nb_kill_array		= $nb_ennemis_capt_nord_array;
+			$meutre 		= $nb_allies_capt_nord;
+			$autres			= $nb_autre_capt_nord;
+		}
+		if($id_camp == "0"){
+			$couleur_camp 	= "black";
+			$nom_camp 		= "Renegats";
+			$nb 			= $nbb;
+			$nbact 			= $nbbact;
+			$pvict 			= $nbvictb;
+			$nb_kill		= $nb_ennemis_capt_nord;
+			$nb_kill_array		= $nb_ennemis_capt_nord_array;
+			$meutre 		= $nb_allies_capt_nord;
+			$autres			= $nb_autre_capt_nord;
 		}
 		
 		echo "			<tr>";
@@ -619,7 +661,75 @@ if(isset($_GET['super']) && $_GET['super'] == 'ok'){
 	$t = $res->fetch_assoc();
 	
 	$nom_grade_r = $t['nom_grade'];
+
+	// verts
+	$sql = "SELECT 	max(id_grade) as id_grade_max, 
+					max(xp_perso) as xp_max, 
+					max(pvMax_perso) as pv_max, 
+					max(pmMax_perso) as pm_max, 
+					max(perception_perso) as perception_max, 
+					max(recup_perso) as recup_max, 
+					max(paMax_perso) as pa_max, 
+					max(nb_kill) as kill_max, 
+					max(nb_pnj) as pnj_max 
+			FROM perso, perso_as_grade
+			WHERE perso.id_perso >= '100' 
+			AND perso_as_grade.id_perso = perso.id_perso 
+			AND perso_as_grade.id_grade != 1 AND perso_as_grade.id_grade != 101 AND perso_as_grade.id_grade != 102
+			AND clan='3'";
+	$res = $mysqli->query($sql);
+	$t_i = $res->fetch_assoc();
 	
+	$id_grade_max_i = $t_i['id_grade_max'];
+	$xp_max_i = $t_i['xp_max'];
+	$pv_max_i = $t_i['pv_max'];
+	$pm_max_i = $t_i['pm_max'];
+	$perception_max_i = $t_i['perception_max'];
+	$recup_max_i = $t_i['recup_max'];
+	$pa_max_i = $t_i['pa_max'];
+	$kill_max_i = $t_i['kill_max'];
+	$pnj_max_i = $t_i['pnj_max'];
+	
+	$sql = "SELECT nom_grade FROM grades WHERE id_grade = '$id_grade_max_i'";
+	$res = $mysqli->query($sql);
+	$t = $res->fetch_assoc();
+	
+	$nom_grade_i = $t['nom_grade'];
+	
+	// renegats
+	$sql = "SELECT 	max(id_grade) as id_grade_max, 
+					max(xp_perso) as xp_max, 
+					max(pvMax_perso) as pv_max, 
+					max(pmMax_perso) as pm_max, 
+					max(perception_perso) as perception_max, 
+					max(recup_perso) as recup_max, 
+					max(paMax_perso) as pa_max, 
+					max(nb_kill) as kill_max, 
+					max(nb_pnj) as pnj_max 
+			FROM perso, perso_as_grade
+			WHERE perso.id_perso >= '100' 
+			AND perso_as_grade.id_perso = perso.id_perso 
+			AND perso_as_grade.id_grade != 1 AND perso_as_grade.id_grade != 101 AND perso_as_grade.id_grade != 102
+			AND clan='0'";
+	$res = $mysqli->query($sql);
+	$t_o = $res->fetch_assoc();
+	
+	$id_grade_max_o = $t_b['id_grade_max'];
+	$xp_max_o = $t_o['xp_max'];
+	$pv_max_o = $t_o['pv_max'];
+	$pm_max_o = $t_o['pm_max'];
+	$perception_max_o = $t_o['perception_max'];
+	$recup_max_o = $t_o['recup_max'];
+	$pa_max_o = $t_o['pa_max'];
+	$kill_max_o = $t_o['kill_max'];
+	$pnj_max_o = $t_o['pnj_max'];
+	
+	$sql = "SELECT nom_grade FROM grades WHERE id_grade = '$id_grade_max_o'";
+	$res = $mysqli->query($sql);
+	$t = $res->fetch_assoc();
+	
+	$nom_grade_o = $t['nom_grade'];
+		
 	echo "<div class='table-responsive'>";
 	echo "	<table class='table table-bordered table-hover sortable' style='width:100%'>";
 	echo "		<thead>";
@@ -699,7 +809,13 @@ if(isset($_GET['training']) && $_GET['training'] == 'ok'){
 		if($camp == '2'){
 			$color = 'red';
 		}
-	
+		if($camp == '3'){
+			$color = 'green';
+		}
+		if($camp == '0'){
+			$color = 'black';
+		}
+		
 		echo "		<tr><td align='center'><font color=$color>$nom</font></td><td align='center'>$niveau_e</td><td align='center'>&nbsp;</td></tr>";
 	}
 	
@@ -766,6 +882,10 @@ if(isset($_GET['dernier_tombe']) && $_GET['dernier_tombe'] == 'ok'){
 		$camp_perso_a = $t['camp_perso_capture'];
 		$id_perso_b 	= $t['id_perso_captureur'];
 		$camp_perso_b	= $t['camp_perso_captureur'];
+		$id_perso_i 	= $t['id_perso_captureur'];
+		$camp_perso_i	= $t['camp_perso_captureur'];
+		$id_perso_o 	= $t['id_perso_captureur'];
+		$camp_perso_o	= $t['camp_perso_captureur'];
 		
 		$date_capture = date('Y-m-d H:i:s', $date_capture_o);
 
@@ -920,6 +1040,12 @@ if(!isset($_GET["top"]) && !isset($_GET["titre"]) && !isset($_GET["stats"]) && !
 		}
 		if($id_camp == "2"){
 			$couleur_camp = "red";
+		}
+		if($id_camp == "3"){
+			$couleur_camp = "green";
+		}
+		if($id_camp == "0"){
+			$couleur_camp = "black";
 		}
 		
 		$id_grade_perso = $t2['id_grade'];
