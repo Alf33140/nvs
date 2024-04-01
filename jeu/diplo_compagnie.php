@@ -82,6 +82,12 @@ if($dispo == '1' || $admin){
 					$color_nc = "blue";
 					$nom_nc = "Nordistes";
 				}
+				if($id_clan_compagnie == 3){
+					$color_c = "green";
+					$nom_c = "Indiens";
+					$color_nc = "blue";
+					$nom_nc = "Nordistes";
+				}
 				
 				// recuperation des compagnies de la meme couleur que son camp
 				$sql = "SELECT id_compagnie FROM compagnies WHERE id_clan='$id_clan_compagnie'";
