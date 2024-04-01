@@ -43,13 +43,13 @@ function couleur_clan($clan_perso){
 	if($clan_perso == '1'){
 		$couleur_clan_perso = 'blue';
 	}
-	else if($clan_perso == '2'){
+	if($clan_perso == '2'){
 		$couleur_clan_perso = 'red';
 	}
-	else if($clan_perso == '3'){
+	if($clan_perso == '3'){
 		$couleur_clan_perso = 'green';
 	}
-	else {
+	if($clan_perso == '0'){
 		$couleur_clan_perso = 'black';
 	}
 	return $couleur_clan_perso;
