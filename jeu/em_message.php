@@ -32,6 +32,10 @@ if($dispo == '1' || $admin){
 			
 			if ($camp_em == 1) {
 				$image_em = "em_nord.png";
+			if ($camp_em == 3) {
+				$image_em = "em_nord.png";
+			if ($camp_em == 0) {
+				$image_em = "em_nord.png";
 			} else {
 				$image_em = "em_sud.png";
 			}
