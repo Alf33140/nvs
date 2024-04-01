@@ -114,7 +114,13 @@ if($dispo == '1' || $admin){
 						if($camp_bat == '2'){
 							$camp_bat2 = 'rouge';
 						}
-
+						if($camp_bat == '3'){
+							$camp_bat2 = 'vert';
+						}
+						if($camp_bat == '0'){
+							$camp_bat2 = 'noir';
+						}
+							
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
