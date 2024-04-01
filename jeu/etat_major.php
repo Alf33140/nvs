@@ -35,6 +35,12 @@ if($dispo == '1' || $admin){
 			if ($camp_em == 1) {
 				$image_em = "em_nord.png";
 				$forum_parent_id = '7';
+			if ($camp_em == 3) {
+				$image_em = "em_nord.png";
+				$forum_parent_id = '9';
+			if ($camp_em == 0 {
+				$image_em = "em_nord.png";
+				$forum_parent_id = '10';
 			} else {
 				$image_em = "em_sud.png";
 				$forum_parent_id = '8';
