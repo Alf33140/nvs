@@ -46,6 +46,10 @@ if($dispo == '1' || $admin){
 				
 				if ($camp == "1") {
 					 $image_croquit .= "_nord";
+				if ($camp == "3") {
+					 $image_croquit .= "_indien";
+				if ($camp == "0") {
+					 $image_croquit .= "_renegat";
 				}
 				else if ($camp == "2") {
 					$image_croquit .= "_sud";
