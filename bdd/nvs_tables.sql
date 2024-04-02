@@ -237,35 +237,35 @@ CREATE TABLE `arme_as_type_unite` (
 -- Structure de la table `armure`
 --
 
-CREATE TABLE `armure` (
-  `id_armure` int(11) NOT NULL,
-  `nom_armure` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `coutOr_armure` int(11) NOT NULL DEFAULT '0',
-  `corps_armure` int(11) NOT NULL DEFAULT '0',
-  `bonusDefense_armure` int(11) NOT NULL DEFAULT '0',
-  `bonusDesDefense_armure` int(11) NOT NULL DEFAULT '0',
-  `bonusRecup_armure` int(11) NOT NULL DEFAULT '0',
-  `bonusAttaque_armure` int(11) NOT NULL DEFAULT '0',
-  `bonusPm_armure` int(11) NOT NULL DEFAULT '0',
-  `bonusPv_armure` int(11) NOT NULL DEFAULT '0',
-  `BonusCharge_armure` int(11) NOT NULL DEFAULT '0',
-  `BonusPerception_armure` int(11) NOT NULL DEFAULT '0',
-  `kit` enum('0','1') NOT NULL DEFAULT '0',
-  `id_kit` int(11) DEFAULT NULL,
-  `poids_armure` decimal(10,1) NOT NULL DEFAULT '0.0',
-  `pvMax_armure` int(11) NOT NULL DEFAULT '0',
-  `description_armure` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `qualite_armure` tinyint(4) NOT NULL DEFAULT '6',
-  `image_armure` varchar(200) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id_armure`),
-  KEY `index_portarmure` (`id_armure`,`corps_armure`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+--CREATE TABLE `armure` (
+ -- `id_armure` int(11) NOT NULL,
+--  `nom_armure` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+ -- `coutOr_armure` int(11) NOT NULL DEFAULT '0',
+ -- `corps_armure` int(11) NOT NULL DEFAULT '0',
+ --`bonusDefense_armure` int(11) NOT NULL DEFAULT '0',
+ -- `bonusDesDefense_armure` int(11) NOT NULL DEFAULT '0',
+ -- `bonusRecup_armure` int(11) NOT NULL DEFAULT '0',
+ -- `bonusAttaque_armure` int(11) NOT NULL DEFAULT '0',
+ -- `bonusPm_armure` int(11) NOT NULL DEFAULT '0',
+ -- `bonusPv_armure` int(11) NOT NULL DEFAULT '0',
+ -- `BonusCharge_armure` int(11) NOT NULL DEFAULT '0',
+ -- `BonusPerception_armure` int(11) NOT NULL DEFAULT '0',
+ -- `kit` enum('0','1') NOT NULL DEFAULT '0',
+  --`id_kit` int(11) DEFAULT NULL,
+--  `poids_armure` decimal(10,1) NOT NULL DEFAULT '0.0',
+--  `pvMax_armure` int(11) NOT NULL DEFAULT '0',
+ -- `description_armure` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+--  `qualite_armure` tinyint(4) NOT NULL DEFAULT '6',
+--  `image_armure` varchar(200) NOT NULL DEFAULT '',
+--  PRIMARY KEY (`id_armure`),
+--  KEY `index_portarmure` (`id_armure`,`corps_armure`)
+--) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- AUTO_INCREMENT pour la table `armure`
 --
-ALTER TABLE `armure`
-  MODIFY `id_armure` int(11) NOT NULL AUTO_INCREMENT;
+--ALTER TABLE `armure`
+--  MODIFY `id_armure` int(11) NOT NULL AUTO_INCREMENT;
 
 -- --------------------------------------------------------
 
